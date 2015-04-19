@@ -78,17 +78,24 @@ treated_raw_data[is.na(treated_raw_data),"steps"] <-75
 ```
 
 
-### Step 4.3:  make a histogram of the total number of steps taken each day. need to re-aggregate the filled data by day and calculate mean as before.
+### Step 4.3:  make a histogram of the total number of steps taken each day. need to re-aggregate the filled data by day and calculate mean as before. Report out the mean and median.
 ```{r,echo=TRUE}
 filled_daily_data<-aggregate(treated_raw_data$steps,by=list(as.Date(treated_raw_data$date)),FUN=sum)
 names(filled_daily_data)<-c("Date","Steps")
 str(filled_daily_data)
+filled_mean_daily_steps<-mean(filled_daily_data$Steps,na.rm=TRUE)
+filled_median_daily_steps<-median(filled_daily_data$Steps,na.rm=TRUE)
+filled_mean_daily_steps
+filled_median_daily_steps
+
+
 hist(filled_daily_data$Steps)
 ```
 #### Do these values differ from the estimates from the first part of the assignment? 
 ##### They do not appear to. 
 #### What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ##### negligible.
+
 
 ## 5.0 Are there differences in activity patterns between weekdays and weekends?
 ### Yes, it would appear there is more activity on weekends, esp Saturdays. this is bourne out by separating the weekdays from the weekend days.

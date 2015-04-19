@@ -126,7 +126,7 @@ treated_raw_data[is.na(treated_raw_data),"steps"] <-75
 ```
 
 
-### Step 4.3:  make a histogram of the total number of steps taken each day. need to re-aggregate the filled data by day and calculate mean as before.
+### Step 4.3:  make a histogram of the total number of steps taken each day. need to re-aggregate the filled data by day and calculate mean as before. Report out the mean and median.
 
 ```r
 filled_daily_data<-aggregate(treated_raw_data$steps,by=list(as.Date(treated_raw_data$date)),FUN=sum)
@@ -138,6 +138,24 @@ str(filled_daily_data)
 ## 'data.frame':	61 obs. of  2 variables:
 ##  $ Date : Date, format: "2012-10-01" "2012-10-02" ...
 ##  $ Steps: num  21600 126 11352 12116 13294 ...
+```
+
+```r
+filled_mean_daily_steps<-mean(filled_daily_data$Steps,na.rm=TRUE)
+filled_median_daily_steps<-median(filled_daily_data$Steps,na.rm=TRUE)
+filled_mean_daily_steps
+```
+
+```
+## [1] 12187.02
+```
+
+```r
+filled_median_daily_steps
+```
+
+```
+## [1] 11458
 ```
 
 ```r

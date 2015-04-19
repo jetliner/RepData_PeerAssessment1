@@ -300,7 +300,7 @@ title(main=&quot;average number of steps taken over the 5 minute time intervals&
 treated_raw_data[is.na(treated_raw_data),&quot;steps&quot;] &lt;-75
 </code></pre>
 
-<h3>Step 4.3:  make a histogram of the total number of steps taken each day. need to re-aggregate the filled data by day and calculate mean as before.</h3>
+<h3>Step 4.3:  make a histogram of the total number of steps taken each day. need to re-aggregate the filled data by day and calculate mean as before. Report out the mean and median.</h3>
 
 <pre><code class="r">filled_daily_data&lt;-aggregate(treated_raw_data$steps,by=list(as.Date(treated_raw_data$date)),FUN=sum)
 names(filled_daily_data)&lt;-c(&quot;Date&quot;,&quot;Steps&quot;)
@@ -310,6 +310,20 @@ str(filled_daily_data)
 <pre><code>## &#39;data.frame&#39;:    61 obs. of  2 variables:
 ##  $ Date : Date, format: &quot;2012-10-01&quot; &quot;2012-10-02&quot; ...
 ##  $ Steps: num  21600 126 11352 12116 13294 ...
+</code></pre>
+
+<pre><code class="r">filled_mean_daily_steps&lt;-mean(filled_daily_data$Steps,na.rm=TRUE)
+filled_median_daily_steps&lt;-median(filled_daily_data$Steps,na.rm=TRUE)
+filled_mean_daily_steps
+</code></pre>
+
+<pre><code>## [1] 12187.02
+</code></pre>
+
+<pre><code class="r">filled_median_daily_steps
+</code></pre>
+
+<pre><code>## [1] 11458
 </code></pre>
 
 <pre><code class="r">hist(filled_daily_data$Steps)
