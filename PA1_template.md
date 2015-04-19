@@ -9,7 +9,7 @@ output:
 ---
 
 
-## 1.0 Loading and preprocessing the data
+## *** 1.0 Loading and preprocessing the data
 ### Step 1.1 Read in the CSV file into memory
 
 ```r
@@ -91,20 +91,11 @@ str(interval_data)
 ### Step 3.2 Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 ```r
-plot(interval_data$Interval,interval_data$AvgSteps, xlab= "Intervals", ylab= "Average number steps taken", type='l', col='red') 
-```
-
-```
-## Error in xy.coords(x, y, xlabel, ylabel, log): 'x' and 'y' lengths differ
-```
-
-```r
+plot(interval_data$interval,interval_data$AvgSteps, xlab= "Intervals", ylab= "Average number steps taken", type='l', col='red') 
 title(main="average number of steps taken over the 5 minute time intervals", col.main="black", font.main=4)
 ```
 
-```
-## Error in title(main = "average number of steps taken over the 5 minute time intervals", : plot.new has not been called yet
-```
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 ### Step 3.3 determine Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 ```r
@@ -155,11 +146,11 @@ hist(filled_daily_data$Steps)
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
 #### Do these values differ from the estimates from the first part of the assignment? 
-##### They do not appear to
+##### They do not appear to. 
 #### What is the impact of imputing missing data on the estimates of the total daily number of steps?
-##### Nothing
+##### negligible.
 
 ## 5.0 Are there differences in activity patterns between weekdays and weekends?
-### tbc
+### Yes, it would appear there is more activity on weekends, esp Saturdays. this is bourne out by separating the weekdays from the weekend days.
 
 
